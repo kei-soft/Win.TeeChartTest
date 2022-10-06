@@ -10,8 +10,6 @@ namespace Win.TeeChartTest
 
             this.tChart.Axes.Bottom.Labels.DateTimeFormat = "MM-dd";
 
-            //this.tChart.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
-
             // Set SampleData
             for (int i = 0; i < 1; i++)
             {
@@ -21,6 +19,9 @@ namespace Win.TeeChartTest
 
                 points.FillSampleValues(20);
             }
+
+            // Single Series 인 경우 Legend 에 값이 보일때 처리하기
+            this.tChart.Legend.LegendStyle = Steema.TeeChart.LegendStyles.Series;
         }
     }
 }
