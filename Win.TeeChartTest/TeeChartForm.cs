@@ -19,6 +19,9 @@ namespace Win.TeeChartTest
                 points.XValues.DateTime = true;
                 points.Legend.Text = "test" + i.ToString();
 
+                // °ﬂ Custom ToolTip
+                points.GetSeriesMark += Points_GetSeriesMark;
+
                 points.FillSampleValues(20);
             }
 
@@ -59,6 +62,11 @@ namespace Win.TeeChartTest
 
             // °ﬂ Excel ¿˙¿Â
             this.saveExcelButton.Click += SaveExcelButton_Click;
+        }
+
+        private void Points_GetSeriesMark(Series Series, GetSeriesMarkEventArgs e)
+        {
+            e.MarkText = $"X : {DateTime.FromOADate(Series.XValues[e.ValueIndex]).ToString("yyyy-MM-dd")}\r\nY : {Series.YValues[e.ValueIndex].ToString()} ";
         }
 
         private void TChart_ClickLegend(object? sender, MouseEventArgs e)
