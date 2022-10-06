@@ -28,8 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Steema.TeeChart.Margins margins1 = new Steema.TeeChart.Margins();
+            Steema.TeeChart.Margins margins2 = new Steema.TeeChart.Margins();
             this.tChart = new Steema.TeeChart.TChart();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ymaxLabel = new System.Windows.Forms.Label();
+            this.yminLabel = new System.Windows.Forms.Label();
+            this.xmaxLabel = new System.Windows.Forms.Label();
+            this.xminLabel = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.saveExcelButton = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tChart
@@ -995,7 +1004,7 @@
             this.tChart.Legend.Title.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart.Legend.Title.Shadow.Brush.Solid = true;
             this.tChart.Legend.Title.Shadow.Brush.Visible = true;
-            this.tChart.Location = new System.Drawing.Point(0, 0);
+            this.tChart.Location = new System.Drawing.Point(0, 107);
             this.tChart.Name = "tChart";
             // 
             // 
@@ -1035,12 +1044,12 @@
             // 
             // 
             // 
-            margins1.Bottom = 100;
-            margins1.Left = 100;
-            margins1.Right = 100;
-            margins1.Top = 100;
-            this.tChart.Printer.Margins = margins1;
-            this.tChart.Size = new System.Drawing.Size(800, 450);
+            margins2.Bottom = 100;
+            margins2.Left = 100;
+            margins2.Right = 100;
+            margins2.Top = 100;
+            this.tChart.Printer.Margins = margins2;
+            this.tChart.Size = new System.Drawing.Size(1023, 447);
             // 
             // 
             // 
@@ -1267,14 +1276,85 @@
             this.tChart.Zoom.Brush.Visible = true;
             this.tChart.Zoom.FullRepaint = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ymaxLabel);
+            this.panel1.Controls.Add(this.yminLabel);
+            this.panel1.Controls.Add(this.xmaxLabel);
+            this.panel1.Controls.Add(this.xminLabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1023, 107);
+            this.panel1.TabIndex = 1;
+            // 
+            // ymaxLabel
+            // 
+            this.ymaxLabel.AutoSize = true;
+            this.ymaxLabel.Location = new System.Drawing.Point(320, 63);
+            this.ymaxLabel.Name = "ymaxLabel";
+            this.ymaxLabel.Size = new System.Drawing.Size(63, 20);
+            this.ymaxLabel.TabIndex = 4;
+            this.ymaxLabel.Text = "Y max : ";
+            // 
+            // yminLabel
+            // 
+            this.yminLabel.AutoSize = true;
+            this.yminLabel.Location = new System.Drawing.Point(320, 19);
+            this.yminLabel.Name = "yminLabel";
+            this.yminLabel.Size = new System.Drawing.Size(61, 20);
+            this.yminLabel.TabIndex = 3;
+            this.yminLabel.Text = "Y min : ";
+            // 
+            // xmaxLabel
+            // 
+            this.xmaxLabel.AutoSize = true;
+            this.xmaxLabel.Location = new System.Drawing.Point(29, 63);
+            this.xmaxLabel.Name = "xmaxLabel";
+            this.xmaxLabel.Size = new System.Drawing.Size(64, 20);
+            this.xmaxLabel.TabIndex = 2;
+            this.xmaxLabel.Text = "X max : ";
+            // 
+            // xminLabel
+            // 
+            this.xminLabel.AutoSize = true;
+            this.xminLabel.Location = new System.Drawing.Point(29, 19);
+            this.xminLabel.Name = "xminLabel";
+            this.xminLabel.Size = new System.Drawing.Size(62, 20);
+            this.xminLabel.TabIndex = 1;
+            this.xminLabel.Text = "X min : ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.saveExcelButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 554);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1023, 72);
+            this.panel2.TabIndex = 2;
+            // 
+            // saveExcelButton
+            // 
+            this.saveExcelButton.Location = new System.Drawing.Point(29, 15);
+            this.saveExcelButton.Name = "saveExcelButton";
+            this.saveExcelButton.Size = new System.Drawing.Size(94, 29);
+            this.saveExcelButton.TabIndex = 0;
+            this.saveExcelButton.Text = "Save Excel";
+            this.saveExcelButton.UseVisualStyleBackColor = true;
+            // 
             // TeeChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1023, 626);
             this.Controls.Add(this.tChart);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "TeeChartForm";
             this.Text = "TeeChart Form";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1282,5 +1362,12 @@
         #endregion
 
         private Steema.TeeChart.TChart tChart;
+        private Panel panel1;
+        private Panel panel2;
+        private Button saveExcelButton;
+        private Label ymaxLabel;
+        private Label yminLabel;
+        private Label xmaxLabel;
+        private Label xminLabel;
     }
 }

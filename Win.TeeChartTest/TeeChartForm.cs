@@ -1,3 +1,4 @@
+using Steema.TeeChart.Export;
 using Steema.TeeChart.Styles;
 using Steema.TeeChart.Tools;
 
@@ -53,6 +54,11 @@ namespace Win.TeeChartTest
 
             // ◆ Zoom In 시 X, Y 축 Min, Max 값 가져오기
             this.tChart.Zoomed += TChart_Zoomed;
+            this.tChart.UndoneZoom += (s, e) => SetMinMaxChart();
+            SetMinMaxChart();
+
+            // ◆ Excel 저장
+            this.saveExcelButton.Click += SaveExcelButton_Click;
         }
 
         private void TChart_ClickLegend(object? sender, MouseEventArgs e)
@@ -117,6 +123,36 @@ namespace Win.TeeChartTest
 
             double zoomYMinValue = this.tChart.Axes.Left.CalcPosPoint(this.tChart.Zoom.y1);
             double zoomYMaxValue = this.tChart.Axes.Left.CalcPosPoint(this.tChart.Zoom.y0);
+
+            this.xminLabel.Text = "X min : " + DateTime.FromOADate(zoomXMinValue).ToString("MM-dd");
+            this.xmaxLabel.Text = "X max : " + DateTime.FromOADate(zoomXMaxValue).ToString("MM-dd");
+
+            this.yminLabel.Text = "Y min : " + zoomYMinValue.ToString();
+            this.ymaxLabel.Text = "Y max : " + zoomYMaxValue.ToString();
         }
+
+        private void SetMinMaxChart()
+        {
+            this.xminLabel.Text = "X min : " + DateTime.FromOADate(this.tChart.Axes.Bottom.MinXValue).ToString("MM-dd");
+            this.xmaxLabel.Text = "X max : " + DateTime.FromOADate(this.tChart.Axes.Bottom.MaxXValue).ToString("MM-dd");
+
+            this.yminLabel.Text = "Y min : " + this.tChart.Axes.Left.MinYValue.ToString();
+            this.ymaxLabel.Text = "Y max : " + this.tChart.Axes.Left.MaxYValue.ToString();
+        }
+
+        private void SaveExcelButton_Click(object? sender, EventArgs e)
+        {
+            // Save Excel
+            string fielPath = "d://test.xls";
+            DataExport dataExport = new DataExport(this.tChart);
+            ExcelFormat excelFormat = dataExport.Excel;
+
+            excelFormat.IncludeHeader = true;
+            excelFormat.IncludeIndex = true;
+            excelFormat.IncludeLabels = true;
+
+            excelFormat.Save(fielPath);
+        }
+
     }
 }
